@@ -9,7 +9,7 @@ class CreateAcc extends Component{
         const credentials = {
             username,password
         }
-        console.log(username,password);
+        console.log(credentials);
         if(password === confirmPassword){
             fetch('http://localhost:8000/signup',{
                 method: 'POST',
@@ -18,9 +18,9 @@ class CreateAcc extends Component{
                 },
                 body: JSON.stringify(credentials)
             }).then(res => {
-                console.log(`Got Response: ${res}`);
+                console.log(res);
             }).catch(err => {
-                console.log(`Caught error: ${err}`);
+                console.log('Damn!!!!');
             })
         }
         else{
