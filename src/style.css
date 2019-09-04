@@ -33,7 +33,7 @@
         outline: none;
     }
     .input-field:focus{
-        outline: rgb(0, 119, 255);
+        border-color:  rgb(0, 119, 255);
     }
 
 /**********Buttons**********/
