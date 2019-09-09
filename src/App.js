@@ -12,20 +12,31 @@ class App extends Component{
             budgetMain: false 
         }
     }
-    login_handler(){
+    async login_handler(){
         console.log('handling login')
         const data = {
             username: this.refs.uname.value,
             password: this.refs.pwd.value
         }
-        // fetch('/login',{
-        //     method: 'POST',
-        //     body: JSON.stringify(data) ,
-        //     headers: {
-        //         'Content-type': 'application/json'
-        //     } 
-        // }).then(res => console.log(`res: ${res}`));   
-        this.setState({budgetMain: true});
+        if(!data.username || !data.password){
+            alert('Enter username & password');
+        }
+        else{
+            const res = await fetch('http://localhost:8000/login',{
+                method: 'POST',
+                headers: {
+                    'Content-type': 'application/json'
+                },
+                body: JSON.stringify(data) 
+            });
+            const response_server = await res.json();
+            console.log(`Did server recieve data?: ${response_server.serverRes}`,response_server);
+            if(response_server.serverRes === 'success'){
+                this.setState({
+                    budgetMain: true,
+                });
+            }
+        }
     }
     createAcc_handler(){
         this.setState({
@@ -56,9 +67,11 @@ class App extends Component{
         var render_createApp = <CreateAcc />
         var render_budgetMain = <BudgetMain />
         if(this.state.budgetMain){
-            return(render_budgetMain)            
+            console.log('rendering budget..');
+            return(render_budgetMain);          
         }
         else if(this.state.mainPage){
+            console.log('Huahhhhh');
             return(render_loginApp);
         }
         else{
