@@ -17,10 +17,15 @@ class CreateAcc extends Component{
                     'Content-type': 'application/json'
                 },
                 body: JSON.stringify(credentials)
-            }).then(res => {
-                console.log(res);
-            }).catch(err => {
-                console.log('Damn!!!!');
+            }).then(response => response.json())
+            .then(response_data => {
+                if(response_data.requestResult === 'success'){
+                    console.log(response_data);
+                    alert('Account Created Successfully, please login to use App');
+                }
+                else{
+                    alert('Account is Currently in use,Please create your account with another Username');
+                }
             })
         }
         else{
