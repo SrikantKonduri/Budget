@@ -1,14 +1,22 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 import App from './App'
+import {BrowserRouter as Router,Route,Switch} from 'react-router-dom';
+import BudgetMain from './BudgetMain';
 import * as serviceWorker from './serviceWorker';
 
 class NewComponent extends Component{
     render(){
         return(
-            <div>
-                <App />
-            </div>
+            <Router>
+                <div>
+                    <Switch>
+                        <Route exact path = '/' component = {App}/>
+                        <Route exact path = '/home' component = {BudgetMain}/>
+                    </Switch>
+                </div>
+            </Router>
+            
         );
     }
 }
