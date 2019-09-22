@@ -35,17 +35,15 @@ class CreateAcc extends Component{
     render(){
         return(
             <div id="frame">
-                <form> 
-                    <h2 id = "app-title">Budget</h2>
-                    <input type = "email" placeholder = 'Username' className = "input-field" id = "uname" ref = 'uname'>
-                    </input>
-                    <input type="password" placeholder="Password" className = "input-field" ref = 'pwd'>
-                    </input>
-                    <input type="password" placeholder="Confirm Password"
-                        className = "input-field" ref = 'cpwd'>
-                    </input>
-                    <button id = 'signup-btn' onClick = {() => this.create_acc_handler()}>Sign Up</button>
-                </form>
+                <h2 id = "app-title">Budget</h2>
+                <input type = "email" placeholder = 'Username' className = "input-field" id = "uname" ref = 'uname'>
+                </input>
+                <input type="password" placeholder="Password" className = "input-field" ref = 'pwd'>
+                </input>
+                <input type="password" placeholder="Confirm Password"
+                    className = "input-field" ref = 'cpwd'>
+                </input>
+                <button id = 'signup-btn' onClick = {() => this.create_acc_handler()}>Sign Up</button>
             </div>
         );
     }
