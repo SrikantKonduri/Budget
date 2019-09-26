@@ -3,10 +3,12 @@ import CreateAcc from './CreateAcc'
 import BudgetMain from './BudgetMain'
 import './style.css'
 import {Redirect} from 'react-router-dom';
+import Cookies from 'universal-cookie';
 
-const jwt = require('jsonwebtoken');
-const {promisify} = require('util');
-const SECRET = 'THIS-IS-MY-SECRET-KEY-YOU-CANT-CRACK-IT';
+const cookies = new Cookies();
+// const jwt = require('jsonwebtoken');
+// const {promisify} = require('util');
+// const SECRET = 'THIS-IS-MY-SECRET-KEY-YOU-CANT-CRACK-IT';
 
 class App extends Component{
     constructor(props){
@@ -17,9 +19,17 @@ class App extends Component{
             budgetMain: false 
         }
     }
-    async extractId(token){
-        const decodedData = await promisify(jwt.verify)(token,SECRET);
-        return decodedData.id;
+    // async extractId(token){
+    //     const decodedData = await promisify(jwt.verify)(token,SECRET);
+    //     return decodedData.id;
+    // }
+    componentWillMount(){
+        if(cookies.get('jwt_token')){
+            this.state.loggedIn = true;
+        }
+    }
+    renderLogin(){
+        this.setState({mainPage: true});
     }
     async login_handler(){
         console.log('handling login')
@@ -38,14 +48,18 @@ class App extends Component{
                 },
                 body: JSON.stringify(data) 
             });
+            console.log(res);
             const response_server = await res.json();
-            console.log(`Did server recieve data?: ${response_server.serverRes}`,response_server);
-            if(response_server.serverRes === 'success'){
-                const user_id = await this.extractId(response_server.token);
-                console.log(`user_id: ${user_id}`);
+            console.log(`Did server recieve data?: ${response_server.message}`,response_server);
+            if(response_server.message === 'success'){
+                // const user_id = await this.extractId(response_server.token);
+                // console.log(`user_id: ${user_id}`);
+                console.log('----Date------');
+                console.log(new Date().getTime());
+                cookies.set('jwt_token',response_server.token,{maxAge: response_server.ea});
+                cookies.set('user',response_server.user,{maxAge: response_server.ea});
                 this.setState({
                     loggedIn: true,
-                    token: response_server.token
                 })
                 // <Redirect to = {`/home/${response_server.token}`}/>
                 // this.props.history.push(`/home/${response_server.token}`);
@@ -83,14 +97,15 @@ class App extends Component{
                 </button>
             </div>            
         </div>
-        var render_createApp = <CreateAcc />
+        var render_createApp = <CreateAcc renderLogin = {this.renderLogin.bind(this)}/>
         // var render_budgetMain = <BudgetMain />
         if(this.state.loggedIn){
             console.log('rendering budget..');
+            console.log('---------Token via cookie-------');
+            console.log(cookies.get('jwt_token'))
             return <Redirect 
                     to = {{
                         pathname: `/home`,
-                        state: {token: this.state.token}
                     }}/>
             // return <Redirect to = {`/home/${this.state.token}`}/>
         }
