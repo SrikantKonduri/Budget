@@ -141,3 +141,19 @@ h3,h1{
 }
 .type-field:first-child { border-top: 1px solid #e7e7e7; }
 .type-field:nth-child(even) { background-color: #f7f7f7; }
+
+#logout-btn{
+    background-color: rgb(246, 80, 80);
+    border-radius: 2px;
+    border: 2px ;
+    padding: 5px 10px;
+    float: right;
+    margin-right: 20px;
+    margin-top: -10px;
+    transition: transform 0.4s;
+    color: white;
+}
+
+#logout-btn:hover {
+    background-color: rgba(255, 0, 0, 0.842);
+}
