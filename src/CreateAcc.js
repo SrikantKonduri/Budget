@@ -19,9 +19,10 @@ class CreateAcc extends Component{
                 body: JSON.stringify(credentials)
             }).then(response => response.json())
             .then(response_data => {
-                if(response_data.requestResult === 'success'){
+                if(response_data.message === 'success'){
                     console.log(response_data);
                     alert('Account Created Successfully, please login to use App');
+                    this.props.renderLogin();
                 }
                 else{
                     alert('Account is Currently in use,Please create your account with another Username');
