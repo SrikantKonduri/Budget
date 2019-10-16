@@ -58,6 +58,7 @@ class App extends Component{
                 console.log(new Date().getTime());
                 cookies.set('jwt_token',response_server.token,{maxAge: response_server.ea});
                 cookies.set('user',response_server.user,{maxAge: response_server.ea});
+                cookies.set('uid',response_server.id,{maxAge: response_server.ea});
                 this.setState({
                     loggedIn: true,
                 })
