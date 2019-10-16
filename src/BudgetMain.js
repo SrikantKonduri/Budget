@@ -21,6 +21,8 @@ class BudgetMain extends Component{
             totalAvail: 0.00,
             id: 0,
             tokenExpired: false,
+            viewProfile: false,
+            updateProfile: false,
             user: ''
         }
     }
@@ -179,7 +181,14 @@ class BudgetMain extends Component{
         console.log('logged out!')
         cookies.remove('jwt_token');
         cookies.remove('user');
+        cookies.remove('uid');
         this.setState({tokenExpired: true});
+    }
+    profileHandler(){
+        this.setState({viewProfile: true})
+    }
+    updateProfileHandler(){
+        this.setState({updateProfile: true})
     }
     render(){
         var income_symbol = '+';
@@ -197,12 +206,28 @@ class BudgetMain extends Component{
                     pathname: '/'
                 }}/>
         }
+        else if(this.state.viewProfile){
+            return <Redirect 
+                to = {{
+                    pathname: '/profile'
+                }}/>
+        }
+        else if(this.state.updateProfile){
+            return <Redirect 
+                to = {{
+                    pathname: '/updateProfile'
+                }}/>
+        }
         else{
             return(
                 <section>
+                <div id = 'options'>
+                    <ion-icon name="create" id = 'edit-profile' title = 'Edit Profile' onClick = {this.updateProfileHandler.bind(this)}></ion-icon>
+                    <ion-icon name="person" id = 'view-profile' title = 'View Profile'  onClick = {this.profileHandler.bind(this)}></ion-icon>
+                </div>
                 <button id = 'logout-btn' onClick = {this.logoutHandler.bind(this)}>Logout</button>
                 <div id = 'month-summary'>
-                    <h3><b>{cookies.get('user')}'s</b> Budget:</h3>
+                    <h3>_______<b>Budget Available</b>_______</h3>
                     <h1 id = 'avail-budget'>{`${curr_budget_sign} ${this.state.totalAvail}`}
                     </h1>
                     <div id = 'inc-field'>
@@ -226,7 +251,7 @@ class BudgetMain extends Component{
                     <input type = 'number' placeholder = 'Value'
                     className = 'input-budget' id = 'value-field' ref = 'val'/>
                     <div id = 'icon' onClick = {() => this.addNewItemHandler()}>
-                        <ion-icon name="checkmark-circle-outline"/>
+                        <ion-icon name="checkmark-circle-outline" title = 'Add'/>
                     </div>
                 </div>
                 <div className = 'row'>
