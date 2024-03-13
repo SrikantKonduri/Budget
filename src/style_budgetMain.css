@@ -59,18 +59,22 @@ h3,h1{
 }
 #value-type{
     height: 40px;
-    margin-left: 400px;
+    margin-left: 100px;
 }
 #value-field{
     margin-left: 10px;
     padding: 4px 5px;
 }
 #icon{
+    /* border: 2px solid red; */
     width: 40px;
     margin-top: -40px;
-    margin-left: 890px;
+    margin-left: 880px;
     color: rgba(0, 119, 255, 0.623); 
     font-size: 35px;
+}
+#icon:active{
+    transform: translateY(2px);
 }
 #inc-section{
     /* background-color: red; */
@@ -141,3 +145,187 @@ h3,h1{
 }
 .type-field:first-child { border-top: 1px solid #e7e7e7; }
 .type-field:nth-child(even) { background-color: #f7f7f7; }
+
+#logout-btn{
+    background-color: rgb(246, 80, 80);
+    border-radius: 2px;
+    border: 2px ;
+    padding: 5px 10px;
+    float: right;
+    margin-right: 20px;
+    margin-top: -60px;
+    transition: transform 0.4s;
+    color: white;
+}
+
+#logout-btn:hover {
+    background-color: rgba(255, 0, 0, 0.842);
+}
+
+#options{
+    /* border: 2px solid red; */
+    font-size: 30px;
+    width: 100px;
+    color:rgba(18, 67, 124, 0.993);
+}
+
+#edit-profile{
+    margin-right: 20px;
+}
+
+#view-profile:hover{
+    color: rgb(48, 134, 231);
+    box-shadow: 1px 1px #cac8c8;
+}
+#edit-profile:hover{
+    color: rgb(48, 134, 231);
+    box-shadow: 1px 1px #cac8c8;
+}
+
+#item-date{
+    /* float: right; */
+    /* border: 2px solid red; */
+    margin-top: 10px;
+    margin-left: 190px;
+    margin-right: -50px;
+    padding: 8px 7px;
+    border: 2px solid #1b1b1b3d;
+    border-radius: 5px;
+}
+
+#item-date:focus{
+    border-color: rgba(0, 119, 255, 0.644);
+}
+
+#month{
+    margin-left: 535px;   
+    padding: 8px 7px;
+    border: 2px solid #1b1b1b3d;
+    border-radius: 5px;
+}
+
+#month:focus{
+    border-color: rgba(0, 119, 255, 0.644);
+}
+
+#document-icon{
+    font-size: 300%;
+}
+
+#document-icon-div{
+    color: rgba(0, 119, 255, 0.644);
+    background-color: white;
+    border-radius: 20%;
+    position: fixed;
+    display: block;
+    bottom: 1.5%;
+    left: 1.5%;
+    z-index: 1;
+    border: 1px solid #dfe1e5;
+}
+
+#document-icon-div:hover{
+    box-shadow: 0 1px 6px 0 rgba(32,33,36,0.28);
+    border: 1px solid rgba(223, 225, 229, 0.459);
+    cursor: pointer;
+}
+
+#document-icon-div:active{
+    transform: translateY(2px);
+}
+
+#popup-window-backlit{
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+#window-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 60%;
+}
+
+#window-content h2{
+    text-align: center;
+}
+
+#window-content button{
+    border-radius: 5px;
+    padding: 5px 20px;
+    transition: border-color 0.3s;
+    transition: color 0.3s;
+    background-color: white;
+    outline: none;
+    display: block;
+    margin-top: 20px;
+    margin-left: 300px;
+    border-color: transparent;
+    color: rgb(255, 255, 255);
+    background-color: rgba(0, 119, 255, 0.89);
+}
+
+#window-content button:hover{
+    background-color: rgba(0, 119, 255, 0.842);
+    cursor: pointer;
+}
+
+#window-content button:active{
+    transform: translateY(1.5px);
+}
+
+#close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+  
+#close:hover,
+#close:focus {
+    color: red;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#close:active{
+    transform: translateY(2px);
+}
+
+.checkbox-div{
+    text-align: center;
+    padding: 20px 50px;
+    /* background-color: red; */
+}
+.checkbox {
+    outline: 0;
+    -webkit-appearance: none;
+    background-color: #fafafa;
+    border: 1px solid #cacece;
+    /* box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px -15px 10px -12px rgba(0,0,0,0.05); */
+    padding: 15px;
+    border-radius: 50%;
+    display: inline-block;
+    position: relative;
+    margin-right: 40px;
+    margin-bottom: -10px;
+}
+
+.checkbox:checked
+{
+    border: 1px solid rgba(0, 119, 255, 0.486);
+    background-color: rgba(0, 119, 255, 0.644);
+}
+
+.checkbox:hover{
+    cursor: pointer;
+}
